@@ -1,5 +1,4 @@
 import { useTheme } from '../../../hooks/useTheme';
-import styles from './theme-toggle.module.css';
 
 export function ThemeToggle() {
   const { theme, toggle } = useTheme();
@@ -8,13 +7,11 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggle}
-      className={styles.toggle}
+      className="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       title={isDark ? 'Light mode' : 'Dark mode'}
     >
-      <span className={styles.icon} aria-hidden="true">
-        {isDark ? '☀️' : '🌙'}
-      </span>
+      <span aria-hidden="true">{isDark ? '☀️' : '🌙'}</span>
     </button>
   );
 }
