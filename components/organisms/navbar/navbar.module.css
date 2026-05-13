@@ -100,8 +100,34 @@
   to   { transform: translateY(0);    opacity: 1; }
 }
 
+/* Right-side actions (theme toggle + CTA) */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navCta {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 1rem;
+  background: var(--brand, #3e63dd);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.15s, transform 0.12s;
+}
+
+.navCta:hover {
+  background: var(--brand-dark, #2d4eb5);
+  transform: translateY(-1px);
+}
+
 /* Show hamburger on mobile, hide desktop links */
 @media (max-width: 768px) {
   .links     { display: none; }
   .hamburger { display: flex; }
+  .navCta    { display: none; }
 }

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { ThemeToggle } from '../../atoms/theme-toggle';
 import styles from './navbar.module.css';
 
 const NAV_LINKS = [
@@ -37,6 +38,12 @@ export function Navbar() {
           </li>
         ))}
       </ul>
+
+      {/* Theme toggle + right actions */}
+      <div className={styles.actions}>
+        <ThemeToggle />
+        <Link href="/escrow" className={styles.navCta}>Launch App</Link>
+      </div>
 
       {/* Hamburger (mobile) */}
       <button
