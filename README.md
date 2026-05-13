@@ -1,23 +1,24 @@
-# 🖥️ TrustFlow Frontend
+# 🛍️ Birkinlabs Frontend
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Next.js](https://img.shields.io/badge/Next.js-13-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38bdf8)](https://tailwindcss.com/)
 
-> **The decentralized UI for the TrustFlow gig-economy protocol.**
+> **The premium e-commerce storefront for the Birkinlabs Protocol — shop and pay with Stellar tokens.**
 
-TrustFlow Frontend is the Next.js web application that gives users a seamless interface for creating escrows, tracking milestones, resolving disputes, and managing their on-chain reputation — all powered by Soroban smart contracts on the Stellar network.
+Birkinlabs Frontend is the Next.js storefront powering the Birkinlabs shopping experience. Browse curated products, manage your cart, and check out seamlessly using Stellar (XLM) or any Stellar-based token — all without a credit card.
 
 ---
 
 ## ✨ Core Features
 
-- 🔗 **Wallet Integration**: One-click Stellar wallet connection via Freighter.
-- 💼 **Escrow Dashboard**: Create, fund, and track milestone-based escrow vaults.
-- ⚖️ **Dispute Interface**: Submit evidence, monitor juror votes, and receive settlement outcomes.
-- 🌗 **Dark / Light Mode**: System-aware theme toggling via the `useTheme` hook.
-- 🔔 **Toast Notifications**: Non-blocking feedback for all transaction states.
-- 📱 **Responsive Design**: Mobile-first layout across all breakpoints.
+- 🔗 **Stellar Wallet Connect**: One-click Freighter wallet integration for instant token payments.
+- 🛒 **Product Catalog**: Browsable, filterable product grid with real-time inventory.
+- 💳 **Stellar Checkout**: Pay with XLM or Stellar-based tokens — zero platform fees.
+- 🌗 **Dark / Light Mode**: System-aware theme with smooth toggling.
+- 🔔 **Live Notifications**: Toast alerts for cart updates, payment confirmations, and order status.
+- 📱 **Fully Responsive**: Mobile-first design across all screen sizes.
 
 ---
 
@@ -26,24 +27,21 @@ TrustFlow Frontend is the Next.js web application that gives users a seamless in
 ```
 ├── pages/
 │   ├── _app.tsx            # App shell — providers, global styles
-│   └── index.tsx           # Landing / dashboard entry point
+│   └── index.tsx           # Storefront landing page
 ├── components/
-│   ├── atoms/              # Primitive UI: Button, Card, Input, Checkbox, ProgressBar, Toast
-│   ├── molecules/          # Composed UI: Deposits, FormPledge, TransactionModal, WalletData
-│   └── organisms/          # Page-level sections: Navbar, Campaign, Pledge
+│   ├── atoms/              # Button, Card, Input, Toast, ThemeToggle, ProgressBar
+│   ├── molecules/          # ProductCard, CartItem, CheckoutForm, WalletData
+│   └── organisms/          # Navbar, ProductGrid, CartDrawer, CheckoutModal
 ├── hooks/
 │   ├── useAccount.ts       # Stellar wallet account state
-│   ├── useSubscription.ts  # Real-time contract event subscriptions
-│   ├── useTheme.ts         # Dark/light theme management
-│   ├── useToast.ts         # Toast notification queue
-│   └── useIsMounted.ts     # SSR hydration safety guard
+│   ├── useCart.ts          # Cart state management
+│   ├── useTheme.ts         # Dark/light theme
+│   └── useToast.ts         # Notification queue
 ├── shared/
-│   ├── contracts.ts        # Shared contract address constants
-│   └── utils.ts            # Shared utility functions
-├── styles/
-│   ├── globals.css         # Global styles and CSS variables
-│   └── Home.module.css     # Homepage styles
-└── public/                 # Static assets and favicon
+│   ├── contracts.ts        # Stellar contract bindings
+│   └── utils.ts            # Shared utilities
+└── styles/
+    └── globals.css         # Tailwind base + theme variables
 ```
 
 ---
@@ -51,10 +49,8 @@ TrustFlow Frontend is the Next.js web application that gives users a seamless in
 ## 🚀 Getting Started
 
 ### Prerequisites
-
 - Node.js >= 18
 - [Freighter Wallet](https://www.freighter.app/) browser extension
-- A funded Stellar testnet account
 
 ### Installation
 
@@ -68,82 +64,48 @@ npm install
 cp .env.example .env
 ```
 
-Key variables:
-
 ```env
 NEXT_PUBLIC_STELLAR_NETWORK=TESTNET
 NEXT_PUBLIC_SOROBAN_RPC_URL=https://soroban-testnet.stellar.org
-NEXT_PUBLIC_ESCROW_CONTRACT_ID=your-contract-id
+NEXT_PUBLIC_PAYMENT_CONTRACT_ID=your-contract-id
 ```
 
 ### Running
 
 ```bash
-# Development
 npm run dev
-
-# Production build
-npm run build && npm start
 ```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
----
-
-## 📖 Component Guide
-
-### Atoms
-Base-level, stateless UI primitives. Use these directly or compose them into molecules.
-- `Button` — primary, secondary, and loading states.
-- `AmountInput` — numeric input with token denomination label.
-- `ProgressBar` — milestone completion indicator.
-- `Toast` — auto-dismissing notification bubble.
-- `ThemeToggle` — dark/light mode switcher.
-
-### Molecules
-Stateful compositions built from atoms.
-- `FormPledge` — full pledge form with validation and submission.
-- `TransactionModal` — step-by-step transaction status overlay.
-- `WalletData` — connected wallet summary card.
-- `Deposits` — list of active deposits with release controls.
-
-### Organisms
-Full page sections wired to on-chain data.
-- `Navbar` — responsive top nav with wallet connect.
-- `Campaign` — campaign detail with funding progress.
-- `Pledge` — pledge workflow from input to confirmation.
 
 ---
 
 ## 🛡️ Security
 
 - No private keys ever touch the browser — all signing delegated to Freighter.
-- Contract IDs and RPC URLs loaded strictly from environment variables.
-- XDR simulation run before every transaction submission.
+- All payment amounts validated against live contract state before submission.
+- Environment variables never logged or exposed in client bundles.
 
 ---
 
 ## 🗺️ Roadmap
 
-- [ ] **Profile Pages**: On-chain reputation and work history viewer.
-- [ ] **Dispute UI**: Full juror dashboard with evidence upload and voting.
-- [ ] **Mobile App**: React Native port leveraging shared hooks and types.
-- [ ] **Internationalisation (i18n)**: Multi-language support via next-intl.
+- [ ] **Product Detail Pages**: Full product view with images, specs, and reviews.
+- [ ] **Order History**: On-chain purchase history tied to wallet address.
+- [ ] **Multi-Token Checkout**: Pay with USDC, XLM, or any Stellar-based asset.
+- [ ] **Seller Dashboard**: Upload and manage product listings on-chain.
 
 ---
 
 ## 🤝 Community & Support
 
-- **Documentation**: [Full Docs](https://docs.trustflow.xyz)
-- **Issues**: [Report bugs or request features](https://github.com/trustflow-protocol/trustflow-frontend/issues)
-- **Discussions**: [Stellar Community Forum](https://stellar.org/community)
+- **Docs**: [docs.birkinlabs.xyz](https://docs.birkinlabs.xyz)
+- **Issues**: [birkinlabs-frontend/issues](https://github.com/Birkinlabs-Protocol/birkinlabs-frontend/issues)
 
 ---
 
-*Securing the future of work, one transaction at a time.*
+*Shop freely. Pay trustlessly.*
 
 ---
 
 ## 📜 License
 
-MIT License. Copyright (c) 2026 TrustFlow Protocol.
+MIT License. Copyright (c) 2026 Birkinlabs Protocol.
