@@ -1,0 +1,4 @@
+{
+  "network": "TESTNET",
+  "rpcUrl": "https://soroban-testnet.stellar.org"
+}
