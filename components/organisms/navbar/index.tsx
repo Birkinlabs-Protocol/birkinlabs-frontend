@@ -21,7 +21,7 @@ export function Navbar() {
     <nav className="sticky top-0 z-50 flex items-center justify-between px-6 h-16 bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800 shadow-sm">
       {/* Brand */}
       <Link href="/" onClick={close} className="text-xl font-extrabold text-gray-900 dark:text-white tracking-tight">
-        TrustFlow
+        Birkinlabs
       </Link>
 
       {/* Desktop links */}

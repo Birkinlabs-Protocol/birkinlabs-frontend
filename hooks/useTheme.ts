@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 
 export type Theme = 'light' | 'dark';
 
-const STORAGE_KEY = 'trustflow-theme';
+const STORAGE_KEY = 'birkinlabs-theme';
 
 function getSystemTheme(): Theme {
   if (typeof window === 'undefined') return 'light';
