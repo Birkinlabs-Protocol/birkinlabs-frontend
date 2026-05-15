@@ -1,0 +1,42 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4f46e5;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Rounded square background -->
+  <rect width="512" height="512" rx="100" fill="url(#grad)"/>
+  
+  <!-- Shopping bag icon -->
+  <g transform="translate(106, 106)">
+    <path
+      d="M60 20L30 60V300C30 310.609 34.2143 320.783 41.7157 328.284C49.2172 335.786 59.3913 340 70 340H230C240.609 340 250.783 335.786 258.284 328.284C265.786 320.783 270 310.609 270 300V60L240 20H60Z"
+      stroke="white"
+      stroke-width="24"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      fill="none"
+    />
+    <path
+      d="M30 60H270"
+      stroke="white"
+      stroke-width="24"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M200 100C200 122.091 191.571 143.566 176.569 159.411C161.566 175.257 140.87 184 120 184C99.1305 184 78.4344 175.257 63.4315 159.411C48.4286 143.566 40 122.091 40 100"
+      stroke="white"
+      stroke-width="24"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <!-- Star accent -->
+    <circle cx="150" cy="220" r="20" fill="white"/>
+    <circle cx="120" cy="260" r="12" fill="white" opacity="0.7"/>
+    <circle cx="180" cy="260" r="12" fill="white" opacity="0.7"/>
+  </g>
+</svg>
