@@ -83,6 +83,7 @@ const Home: NextPage = () => {
           name="description"
           content="Birkinlabs is a premium e-commerce marketplace on the Stellar network. Browse thousands of products and pay instantly with XLM or Stellar-based tokens."
         />
+        <link rel="icon" href="/logo.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
